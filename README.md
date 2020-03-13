@@ -1,2 +1,2 @@
-# springcloud
-springcloud text
+# com.springcloud
+com.springcloud text
