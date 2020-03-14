@@ -15,6 +15,7 @@
     <module>api-common</module>
     <module>7001-eureka-server</module>
     <module>7002-eureka-server</module>
+    <module>8002-provider-payment</module>
   </modules>
 
   <!-- 统一管理jar包版本 -->
