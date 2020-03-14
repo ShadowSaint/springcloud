@@ -39,6 +39,9 @@ mybatis-plus:
 
 
 eureka:
+  instance:
+    instance-id: 8002-payment
+    prefer-ip-address: true
   client:
     # 是否要注册到Eureka,默认是true
     register-with-eureka: true

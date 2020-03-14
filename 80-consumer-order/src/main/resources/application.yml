@@ -6,6 +6,9 @@ spring:
     name: cloud-order-service
 
 eureka:
+  instance:
+    instance-id: 80-order
+    prefer-ip-address: true
   client:
     # 是否要注册到Eureka,默认是true
     register-with-eureka: true
