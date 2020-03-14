@@ -7,6 +7,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -19,6 +20,9 @@ public class PaymentController {
 
     @Resource
     private PaymentService paymentService;
+
+    @Resource
+    private DiscoveryClient discoveryClient;
 
     @Value("${server.port}")
     private String serverPort;
@@ -48,5 +52,14 @@ public class PaymentController {
             return new CommonResult<>(444, serverPort, null);
         }
 //        return new CommonResult(444, "error", null);
+    }
+
+    @ApiOperation("服务发现")
+    @GetMapping("/discovery")
+    public Object discovery() {
+        discoveryClient.getServices().forEach(log::info);
+        discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE")
+                .forEach(i->log.info(i.getServiceId()+"\t"+i.getHost()+"\t"+i.getPort()+"\t"+i.getUri()));
+        return this.discoveryClient;
     }
 }
