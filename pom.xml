@@ -16,6 +16,7 @@
     <module>7001-eureka-server</module>
     <module>7002-eureka-server</module>
     <module>8002-provider-payment</module>
+      <module>80-consumer-feign-order</module>
   </modules>
 
   <!-- 统一管理jar包版本 -->
@@ -33,6 +34,7 @@
     <hutll.version>5.2.3</hutll.version>
     <api-common.version>1.0-SNAPSHOT</api-common.version>
     <eureka.version>2.2.2.RELEASE</eureka.version>
+    <openfeign.version>2.2.2.RELEASE</openfeign.version>
   </properties>
 
   <!-- 子模块集成之后，提供作用：锁定版本+子module不用写groupId和version -->
@@ -125,6 +127,12 @@
         <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         <version>${eureka.version}</version>
       </dependency>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-openfeign</artifactId>
+        <version>${openfeign.version}</version>
+      </dependency>
+
 
 
     </dependencies>
