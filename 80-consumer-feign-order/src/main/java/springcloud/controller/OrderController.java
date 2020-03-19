@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import springcloud.entry.domain.PaymentDO;
+import springcloud.service.PaymentFeignService;
 
 import javax.annotation.Resource;
 
@@ -20,19 +21,19 @@ public class OrderController {
     public static final String PAYMENT_URL = "http://CLOUD-PAYMENT-SERVICE";
 
     @Resource
-    private RestTemplate restTemplate;
+    private PaymentFeignService paymentFeignService;
 
     @SuppressWarnings("rawtypes")
     @ApiOperation("插入")
     @PostMapping("/")
     public CommonResult create(@RequestBody PaymentDO paymentDO) {
-        return restTemplate.postForObject(PAYMENT_URL+"/payment/",paymentDO,CommonResult.class);
+        return paymentFeignService.save(paymentDO);
     }
 
     @SuppressWarnings("rawtypes")
     @ApiOperation("查询")
     @GetMapping("/")
-    public CommonResult getPayment(@RequestParam String id) {
-        return restTemplate.getForObject(PAYMENT_URL+"/payment/?id="+id,CommonResult.class);
+    public CommonResult getPayment(@RequestParam int id) {
+        return paymentFeignService.get(id);
     }
 }
