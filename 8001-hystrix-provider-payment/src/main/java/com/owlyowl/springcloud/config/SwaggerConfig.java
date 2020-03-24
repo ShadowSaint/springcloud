@@ -1,4 +1,4 @@
-package springcloud.config;
+package com.owlyowl.springcloud.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +20,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .select()
                 //为当前包路径
-                .apis(RequestHandlerSelectors.basePackage("springcloud.com.owlyowl.springcloud.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.owlyowl.springcloud.controller"))
                 .paths(PathSelectors.any())
                 .build();
 //        return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class)).build();
