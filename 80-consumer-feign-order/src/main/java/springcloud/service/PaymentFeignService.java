@@ -13,10 +13,10 @@ import springcloud.entry.domain.PaymentDO;
 @FeignClient(value = "CLOUD-PAYMENT-SERVICE")
 public interface PaymentFeignService {
 
-    @PostMapping("/payment/")
-    public CommonResult<PaymentDO> save(PaymentDO payment);
+    @PostMapping(value = "/payment/")
+    public CommonResult<PaymentDO> save(@RequestBody PaymentDO payment);
 
-    @GetMapping("/payment/")
-    public CommonResult<PaymentDO> get(int id);
+    @GetMapping(value = "/payment/")
+    public CommonResult<PaymentDO> get(@RequestParam("id") int id);
 
 }

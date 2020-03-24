@@ -26,14 +26,14 @@ public class OrderController {
     @SuppressWarnings("rawtypes")
     @ApiOperation("插入")
     @PostMapping("/")
-    public CommonResult create(@RequestBody PaymentDO paymentDO) {
+    public CommonResult<PaymentDO> create(@RequestBody PaymentDO paymentDO) {
         return paymentFeignService.save(paymentDO);
     }
 
     @SuppressWarnings("rawtypes")
     @ApiOperation("查询")
     @GetMapping("/")
-    public CommonResult getPayment(@RequestParam int id) {
+    public CommonResult<PaymentDO> getPayment(@RequestParam int id) {
         return paymentFeignService.get(id);
     }
 }
